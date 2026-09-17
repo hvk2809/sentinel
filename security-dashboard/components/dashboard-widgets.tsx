@@ -47,11 +47,11 @@ export function DashboardWidgets() {
   return (
     <div className="space-y-6 w-full">
       {/* 1-Click Forensic Scenario Switcher for Judges & Security Personnel */}
-      <Card className="bg-[#0C0C0C] hover:bg-[#121212] transition-colors border-[#1C1C1E]">
-        <CardHeader className="p-4 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[#1C1C1E]/60">
+      <Card className="bg-card hover:border-zinc-400 dark:hover:border-[#2C2C2E] transition-colors border-border shadow-sm">
+        <CardHeader className="p-4 pb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border">
           <div className="flex items-center gap-2.5">
-            <Shield className="h-4 w-4 text-white" />
-            <CardTitle className="text-sm font-bold text-white">
+            <Shield className="h-4 w-4 text-foreground" />
+            <CardTitle className="text-sm font-bold text-foreground">
               Active Cases
             </CardTitle>
           </div>
@@ -60,14 +60,14 @@ export function DashboardWidgets() {
               size="sm"
               variant="outline"
               onClick={() => setShowCaseChamber(!showCaseChamber)}
-              className="h-7 text-xs border-[#2C2C2E] bg-[#050505] hover:bg-[#1C1C1E] text-[#8E8E93] hover:text-white"
+              className="h-7 text-xs border-border bg-inputBg hover:bg-cardHoverBg text-textSecondary hover:text-foreground"
             >
               {showCaseChamber ? "Collapse Chamber" : "Expand Chamber"}
             </Button>
           </div>
         </CardHeader>
         <CardContent className="p-4 pt-3">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 items-stretch">
             {SCENARIOS.map((sc) => {
               const isSelected = selectedCase.id === sc.id;
               const scThreat = sc.ruling.verdict === "ESCALATED_INSIDER_THREAT";
@@ -80,36 +80,38 @@ export function DashboardWidgets() {
                     setShowCaseChamber(true);
                   }}
                   className={cn(
-                    "text-left p-3.5 rounded-lg border transition-all cursor-pointer flex flex-col justify-between",
+                    "text-left p-3.5 rounded-lg border transition-all cursor-pointer flex flex-col justify-between h-full w-full",
                     isSelected
-                      ? "border-white/80 bg-[#161618] ring-1 ring-white/40 shadow-md"
-                      : "border-[#1C1C1E] bg-[#080808] hover:bg-[#121212] hover:border-[#2C2C2E]"
+                      ? "border-zinc-800 bg-white ring-1 ring-zinc-800/10 shadow-sm dark:border-white/80 dark:bg-[#161618] dark:ring-white/40"
+                      : "border-border bg-card hover:bg-cardHoverBg hover:border-zinc-400 dark:hover:border-[#2C2C2E]"
                   )}
                 >
-                  <div>
-                    <div className="flex items-center justify-between gap-1 mb-1.5">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-white font-mono">{sc.caseNumber}</span>
-                        <span className="text-xs font-semibold text-white truncate max-w-[130px]">{sc.name}</span>
+                  <div className="w-full">
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-baseline gap-1.5 min-w-0">
+                        <span className="text-xs font-bold text-foreground shrink-0 leading-none">{sc.caseNumber}</span>
+                        <span className="text-xs font-semibold text-foreground truncate max-w-[130px] leading-none">{sc.name}</span>
                       </div>
                       <Badge
                         variant="outline"
                         className={cn(
-                          "text-[10px] px-1.5 py-0 border-none font-mono font-semibold",
-                          scThreat ? "bg-rose-500/20 text-rose-400" : "bg-emerald-500/20 text-emerald-400"
+                          "text-[10px] px-1.5 py-0 border-none font-mono font-semibold shrink-0",
+                          scThreat
+                            ? "bg-rose-500/15 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400"
+                            : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400"
                         )}
                       >
                         {scThreat ? "Escalated" : "Suppressed"}
                       </Badge>
                     </div>
-                    <p className="text-[11px] text-[#8E8E93] line-clamp-2 leading-relaxed">
+                    <p className="text-[11px] text-textSecondary line-clamp-2 leading-relaxed h-[36px] overflow-hidden">
                       {sc.storySummary}
                     </p>
                   </div>
 
-                  <div className="mt-3 pt-2.5 border-t border-[#1C1C1E] flex items-center justify-between text-[11px] font-mono text-[#8E8E93]">
-                    <span>Drift: <strong className="text-white">{sc.mahalanobis_dist} D_M</strong></span>
-                    <span className={isSelected ? "text-white font-bold" : "text-[#8E8E93]"}>
+                  <div className="mt-auto pt-2.5 border-t border-border flex items-center justify-between text-[11px] font-mono text-textSecondary w-full">
+                    <span>Drift: <strong className="text-foreground">{sc.mahalanobis_dist} D_M</strong></span>
+                    <span className={isSelected ? "text-foreground font-bold" : "text-textSecondary"}>
                       {isSelected ? "Active Incident" : "Inspect →"}
                     </span>
                   </div>
@@ -120,43 +122,43 @@ export function DashboardWidgets() {
 
           {/* Expanded Multi-Agent Chamber & Verdict for Selected Case */}
           {showCaseChamber && (
-            <div className="mt-4 pt-4 border-t border-[#1C1C1E] space-y-4">
+            <div className="mt-4 pt-4 border-t border-border space-y-4">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Prosecution Brief */}
-                <div className="bg-[#050505] p-4 rounded-lg border border-[#1C1C1E]">
+                <div className="bg-inputBg p-4 rounded-lg border border-border">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-rose-400 font-mono flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-rose-500 dark:text-rose-400 font-mono flex items-center gap-1.5">
                       <span className="h-2 w-2 rounded-full bg-rose-500" />
                       PROSECUTION AUDIT BRIEF | THE AUDITOR
                     </span>
-                    <Badge variant="outline" className="text-[10px] border-rose-500/30 text-rose-400 font-mono">
+                    <Badge variant="outline" className="text-[10px] border-rose-500/30 text-rose-500 dark:text-rose-400 font-mono">
                       Layer 1 Vector Jump
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-xs text-[#3D3833] dark:text-slate-300 leading-relaxed">
                     {selectedCase.prosecution_brief}
                   </p>
                 </div>
 
                 {/* Defense Brief */}
-                <div className="bg-[#050505] p-4 rounded-lg border border-[#1C1C1E]">
+                <div className="bg-inputBg p-4 rounded-lg border border-border">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-slate-200 font-mono flex items-center gap-1.5">
-                      <span className="h-2 w-2 rounded-full bg-slate-400" />
+                    <span className="text-xs font-bold text-foreground font-mono flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-zinc-400" />
                       DEFENSE CONTEXT BRIEF | THE CONTEXT RETRIEVER
                     </span>
-                    <Badge variant="outline" className="text-[10px] border-white/20 text-slate-300 font-mono">
+                    <Badge variant="outline" className="text-[10px] border-border text-textSecondary font-mono">
                       HR & Ticket Validation
                     </Badge>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-2.5">
+                  <p className="text-xs text-[#3D3833] dark:text-slate-300 leading-relaxed mb-2.5">
                     {selectedCase.defense_brief}
                   </p>
                   <div className="space-y-1.5">
                     {selectedCase.tool_calls.map((tc, idx) => (
-                      <div key={idx} className="flex items-center justify-between text-[11px] font-mono text-[#8E8E93] bg-[#0C0C0C] p-2 rounded border border-[#1C1C1E]">
-                        <span className="text-white font-medium">{tc.label}:</span>
-                        <span className={tc.status === "found" ? "text-emerald-400 font-semibold" : "text-rose-400 font-semibold"}>
+                      <div key={idx} className="flex items-center justify-between text-[11px] font-mono text-textSecondary bg-card p-2 rounded border border-border">
+                        <span className="text-foreground font-medium">{tc.label}:</span>
+                        <span className={tc.status === "found" ? "text-emerald-600 dark:text-emerald-400 font-semibold" : "text-rose-600 dark:text-rose-400 font-semibold"}>
                           {tc.detail}
                         </span>
                       </div>
@@ -170,8 +172,8 @@ export function DashboardWidgets() {
                 className={cn(
                   "p-4 rounded-lg border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3",
                   isThreat
-                    ? "border-rose-500/50 bg-rose-950/20"
-                    : "border-emerald-500/50 bg-emerald-950/20"
+                    ? "border-rose-300 bg-rose-50/80 dark:border-rose-500/50 dark:bg-rose-950/20"
+                    : "border-emerald-300 bg-emerald-50/80 dark:border-emerald-500/50 dark:bg-emerald-950/20"
                 )}
               >
                 <div className="space-y-1">
@@ -184,16 +186,16 @@ export function DashboardWidgets() {
                     >
                       {selectedCase.ruling.verdictTitle.replace("//", "|")}
                     </Badge>
-                    <span className="text-xs font-mono text-[#8E8E93]">
-                      Confidence: <strong className="text-white">{(selectedCase.ruling.confidence * 100).toFixed(1)}%</strong>
+                    <span className="text-xs font-mono text-textSecondary">
+                      Confidence: <strong className="text-foreground">{(selectedCase.ruling.confidence * 100).toFixed(1)}%</strong>
                     </span>
                   </div>
-                  <p className="text-xs text-slate-200 leading-relaxed">
+                  <p className="text-xs text-[#2C2825] dark:text-slate-200 leading-relaxed">
                     {selectedCase.ruling.justification}
                   </p>
-                  <div className="text-[11px] font-mono text-[#8E8E93] pt-0.5">
-                    <span className="text-white font-semibold">Directive: </span>
-                    <span className={isThreat ? "text-rose-400 font-semibold" : "text-emerald-400 font-semibold"}>
+                  <div className="text-[11px] font-mono text-textSecondary pt-0.5">
+                    <span className="text-foreground font-semibold">Directive: </span>
+                    <span className={isThreat ? "text-rose-600 dark:text-rose-400 font-semibold" : "text-emerald-600 dark:text-emerald-400 font-semibold"}>
                       {selectedCase.ruling.action_required.replace("//", "|")}
                     </span>
                   </div>
@@ -204,9 +206,9 @@ export function DashboardWidgets() {
                     size="sm"
                     variant="outline"
                     onClick={() => setShowAuditJson(!showAuditJson)}
-                    className="h-8 text-xs font-mono border-[#2C2C2E] bg-[#050505] hover:bg-[#1C1C1E] text-[#8E8E93] hover:text-white gap-1"
+                    className="h-8 text-xs font-mono border-border bg-inputBg hover:bg-cardHoverBg text-textSecondary hover:text-foreground gap-1"
                   >
-                    <Terminal className="h-3.5 w-3.5 text-white" />
+                    <Terminal className="h-3.5 w-3.5 text-foreground" />
                     <span>{showAuditJson ? "Hide JSON" : "SIEM Audit JSON"}</span>
                     {showAuditJson ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
                   </Button>
@@ -215,22 +217,22 @@ export function DashboardWidgets() {
 
               {/* SIEM Audit JSON Log */}
               {showAuditJson && (
-                <div className="p-3.5 bg-[#050505] rounded-lg border border-[#1C1C1E]">
+                <div className="p-3.5 bg-inputBg rounded-lg border border-border">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-[#8E8E93] font-semibold">
+                    <span className="text-xs font-mono text-textSecondary font-semibold">
                       SIEM_AUDIT_TRAIL | RFC-5424_COMPLIANT
                     </span>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={handleCopyJson}
-                      className="h-6 text-xs font-mono text-[#8E8E93] hover:text-white gap-1"
+                      className="h-6 text-xs font-mono text-textSecondary hover:text-foreground gap-1"
                     >
-                      {copied ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                      {copied ? <Check className="h-3 w-3 text-emerald-500" /> : <Copy className="h-3 w-3" />}
                       <span>{copied ? "Copied" : "Copy Payload"}</span>
                     </Button>
                   </div>
-                  <pre className="text-[11px] font-mono text-emerald-400 overflow-x-auto max-h-[160px] leading-relaxed">
+                  <pre className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 overflow-x-auto max-h-[160px] leading-relaxed">
                     {JSON.stringify(selectedCase.audit_json, null, 2)}
                   </pre>
                 </div>

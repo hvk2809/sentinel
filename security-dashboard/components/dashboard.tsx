@@ -13,10 +13,10 @@ export default function Dashboard() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center bg-[#000000] text-white">
+      <div className="min-h-screen w-full flex items-center justify-center bg-background text-foreground">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-6 w-6 border-2 border-white border-t-transparent rounded-full animate-spin" />
-          <span className="text-xs font-mono text-[#8E8E93] tracking-widest uppercase">
+          <div className="h-6 w-6 border-2 border-foreground border-t-transparent rounded-full animate-spin" />
+          <span className="text-xs font-mono text-textSecondary tracking-widest uppercase">
             Initializing Sentinel Gateway...
           </span>
         </div>

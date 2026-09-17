@@ -41,7 +41,7 @@ export function NotificationsView() {
     <div className="space-y-6 w-full">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
             <Bell className="h-5 w-5 text-accent" />
             Live Security Notifications & Incident Alerts
           </h2>
@@ -53,26 +53,26 @@ export function NotificationsView() {
 
       <div className="space-y-3">
         {alerts.map((a) => (
-          <Card key={a.id} className="bg-cardBg border-border p-4 hover:bg-cardHoverBg transition-colors">
+          <Card key={a.id} className="bg-cardBg border-border p-4 hover:bg-cardHoverBg transition-colors shadow-sm">
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-inputBg border border-border text-white shrink-0 mt-0.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-inputBg border border-border text-foreground shrink-0 mt-0.5">
                   {a.type === "critical" ? (
                     <AlertTriangle className="h-4 w-4 text-rose-500" />
                   ) : a.type === "suppressed" ? (
-                    <ShieldCheck className="h-4 w-4 text-emerald-400" />
+                    <ShieldCheck className="h-4 w-4 text-emerald-500" />
                   ) : (
                     <Bell className="h-4 w-4 text-accent" />
                   )}
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-white">{a.title}</h3>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">{a.detail}</p>
+                  <h3 className="text-sm font-semibold text-foreground">{a.title}</h3>
+                  <p className="text-xs text-[#3D3833] dark:text-slate-300 mt-1 leading-relaxed">{a.detail}</p>
                   <span className="text-[11px] text-textSecondary font-mono mt-1.5 block">{a.time}</span>
                 </div>
               </div>
               <Badge
-                className={a.type === "critical" ? "bg-rose-500/20 text-rose-400 border-none font-mono text-[10px]" : "bg-emerald-500/20 text-emerald-400 border-none font-mono text-[10px]"}
+                className={a.type === "critical" ? "bg-rose-500/15 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 border-none font-mono text-[10px]" : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-none font-mono text-[10px]"}
               >
                 {a.type.toUpperCase()}
               </Badge>

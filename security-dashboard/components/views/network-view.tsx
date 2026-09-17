@@ -54,7 +54,7 @@ export function NetworkView() {
     <div className="space-y-6 w-full">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
             <Wifi className="h-5 w-5 text-accent" />
             Network Topology & Outbound Exfiltration Telemetry
           </h2>
@@ -63,32 +63,32 @@ export function NetworkView() {
           </p>
         </div>
         <div className="flex items-center gap-2 font-mono text-xs">
-          <Badge className="bg-emerald-500/20 text-emerald-400 border-none">10.0.0.0/16 Enterprise Subnet</Badge>
-          <Badge className="bg-purple-500/20 text-purple-400 border-none">Zero Cloud Ingress</Badge>
+          <Badge className="bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-none">10.0.0.0/16 Enterprise Subnet</Badge>
+          <Badge className="bg-purple-500/15 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 border-none">Zero Cloud Ingress</Badge>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">External Domains Touched</span>
-          <div className="text-2xl font-bold font-mono text-white mt-1">28 Unique Hosts</div>
+          <div className="text-2xl font-bold font-mono text-foreground mt-1">28 Unique Hosts</div>
           <span className="text-xs text-textSecondary font-mono mt-1 block">Resource Cardinality Metric</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Outbound USB Volume</span>
-          <div className="text-2xl font-bold font-mono text-rose-400 mt-1">1.42 GB</div>
-          <span className="text-xs text-rose-400 font-mono mt-1 block">35 Firmware Binaries (Malory)</span>
+          <div className="text-2xl font-bold font-mono text-rose-600 dark:text-rose-400 mt-1">1.42 GB</div>
+          <span className="text-xs text-rose-600 dark:text-rose-400 font-mono mt-1 block">35 Firmware Binaries (Malory)</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Cloud Sync Throughput</span>
-          <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">18.4 GB</div>
-          <span className="text-xs text-emerald-400 font-mono mt-1 block">Authorized CR-8821 Mirror</span>
+          <div className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">18.4 GB</div>
+          <span className="text-xs text-emerald-600 dark:text-emerald-400 font-mono mt-1 block">Authorized CR-8821 Mirror</span>
         </Card>
       </div>
 
-      <Card className="bg-cardBg border-border">
+      <Card className="bg-cardBg border-border shadow-sm">
         <CardHeader className="p-4 pb-3">
-          <CardTitle className="text-sm font-bold text-white">
+          <CardTitle className="text-sm font-bold text-foreground">
             Monitored Data Transfer Flows & Endpoint Channels
           </CardTitle>
           <CardDescription className="text-xs text-textSecondary">
@@ -114,13 +114,13 @@ export function NetworkView() {
                   <TableRow key={f.id} className="border-border hover:bg-cardHoverBg text-xs font-mono">
                     <TableCell className="font-semibold text-accent">{f.id}</TableCell>
                     <TableCell className="text-textSecondary">{f.timestamp}</TableCell>
-                    <TableCell className="text-white font-medium">{f.source}</TableCell>
-                    <TableCell className="text-white">{f.destination}</TableCell>
+                    <TableCell className="text-foreground font-medium">{f.source}</TableCell>
+                    <TableCell className="text-foreground">{f.destination}</TableCell>
                     <TableCell className="text-textSecondary">{f.protocol}</TableCell>
-                    <TableCell className="text-white font-bold">{f.bytes}</TableCell>
+                    <TableCell className="text-foreground font-bold">{f.bytes}</TableCell>
                     <TableCell>
                       <Badge
-                        className={f.status === "ESCALATED" ? "bg-rose-500/20 text-rose-400 border-none" : "bg-emerald-500/20 text-emerald-400 border-none"}
+                        className={f.status === "ESCALATED" ? "bg-rose-500/15 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 border-none" : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-none"}
                       >
                         {f.status}
                       </Badge>

@@ -20,7 +20,7 @@ export function ReportsView() {
     <div className="space-y-6 w-full">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
             <BarChart3 className="h-5 w-5 text-accent" />
             Deterministic SIEM Audit Reports & EMAD Decision Logs
           </h2>
@@ -29,7 +29,7 @@ export function ReportsView() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          <Badge className="bg-emerald-500/20 text-emerald-400 border-none font-mono text-xs">
+          <Badge className="bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-none font-mono text-xs">
             Sub-10s Deterministic Output
           </Badge>
         </div>
@@ -39,29 +39,29 @@ export function ReportsView() {
         {SCENARIOS.map((s) => {
           const isThreat = s.ruling.verdict === "ESCALATED_INSIDER_THREAT";
           return (
-            <Card key={s.id} className="bg-cardBg border-border p-5">
+            <Card key={s.id} className="bg-cardBg border-border p-5 shadow-sm">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 pb-3 border-b border-border">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-inputBg border border-border text-white font-mono font-bold text-xs">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-inputBg border border-border text-foreground font-mono font-bold text-xs">
                     {s.caseNumber}
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-white">{s.name} ({s.user_id})</h3>
+                    <h3 className="text-sm font-bold text-foreground">{s.name} ({s.user_id})</h3>
                     <p className="text-xs text-textSecondary font-mono">{s.role} • {s.department}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Badge className={isThreat ? "bg-rose-500 text-white font-mono text-[10px]" : "bg-emerald-600 text-white font-mono text-[10px]"}>
+                  <Badge className={isThreat ? "bg-rose-500 text-white font-mono text-[10px] border-none" : "bg-emerald-600 text-white font-mono text-[10px] border-none"}>
                     {s.ruling.verdictTitle}
                   </Badge>
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleCopy(s.id, s.audit_json)}
-                    className="h-7 text-xs font-mono border-border bg-inputBg hover:bg-cardHoverBg text-textSecondary hover:text-white gap-1"
+                    className="h-7 text-xs font-mono border-border bg-inputBg hover:bg-cardHoverBg text-textSecondary hover:text-foreground gap-1"
                   >
-                    {copiedId === s.id ? <Check className="h-3 w-3 text-emerald-400" /> : <Copy className="h-3 w-3" />}
+                    {copiedId === s.id ? <Check className="h-3 w-3 text-emerald-500" /> : <Copy className="h-3 w-3" />}
                     <span>{copiedId === s.id ? "Copied" : "Copy SIEM JSON"}</span>
                   </Button>
                 </div>
@@ -69,16 +69,16 @@ export function ReportsView() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-3 text-xs">
                 <div className="bg-inputBg p-3 rounded border border-border">
-                  <span className="text-rose-400 font-bold font-mono block mb-1">PROSECUTION FINDING:</span>
-                  <p className="text-slate-300 leading-relaxed">{s.prosecution_brief}</p>
+                  <span className="text-rose-600 dark:text-rose-400 font-bold font-mono block mb-1">PROSECUTION FINDING:</span>
+                  <p className="text-[#3D3833] dark:text-slate-300 leading-relaxed">{s.prosecution_brief}</p>
                 </div>
                 <div className="bg-inputBg p-3 rounded border border-border">
-                  <span className="text-accent font-bold font-mono block mb-1">DEFENSE VERIFICATION:</span>
-                  <p className="text-slate-300 leading-relaxed">{s.defense_brief}</p>
+                  <span className="text-foreground font-bold font-mono block mb-1">DEFENSE VERIFICATION:</span>
+                  <p className="text-[#3D3833] dark:text-slate-300 leading-relaxed">{s.defense_brief}</p>
                 </div>
               </div>
 
-              <pre className="bg-[#050505] p-3 rounded border border-border text-[11px] font-mono text-emerald-400 overflow-x-auto max-h-[140px]">
+              <pre className="bg-inputBg p-3 rounded border border-border text-[11px] font-mono text-emerald-600 dark:text-emerald-400 overflow-x-auto max-h-[140px]">
                 {JSON.stringify(s.audit_json, null, 2)}
               </pre>
             </Card>

@@ -80,7 +80,7 @@ export function UsersView() {
     <div className="space-y-6 w-full">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
             <Users className="h-5 w-5 text-accent" />
             User Entity Directory & Peer Cohort Risk Index
           </h2>
@@ -89,31 +89,31 @@ export function UsersView() {
           </p>
         </div>
         <div className="flex items-center gap-2 font-mono text-xs">
-          <Badge className="bg-inputBg border border-border text-white">6 Ingested Cohort Profiles</Badge>
+          <Badge className="bg-inputBg border border-border text-foreground">6 Ingested Cohort Profiles</Badge>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Active Departure Notices</span>
-          <div className="text-2xl font-bold font-mono text-rose-400 mt-1">1 Employee</div>
-          <span className="text-xs text-rose-400 font-mono mt-1 block">Malory Sterling (Resigned)</span>
+          <div className="text-2xl font-bold font-mono text-rose-600 dark:text-rose-400 mt-1">1 Employee</div>
+          <span className="text-xs text-rose-600 dark:text-rose-400 font-mono mt-1 block">Malory Sterling (Resigned)</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">High-Privilege Admins</span>
-          <div className="text-2xl font-bold font-mono text-amber-400 mt-1">2 Accounts</div>
+          <div className="text-2xl font-bold font-mono text-amber-600 dark:text-amber-400 mt-1">2 Accounts</div>
           <span className="text-xs text-textSecondary font-mono mt-1 block">IT Operations & DBA Root</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Fleet Auto-Suppression</span>
-          <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">4 of 6 Safe</div>
-          <span className="text-xs text-emerald-400 font-mono mt-1 block">95% False-Positive Reduction</span>
+          <div className="text-2xl font-bold font-mono text-emerald-600 dark:text-emerald-400 mt-1">4 of 6 Safe</div>
+          <span className="text-xs text-emerald-600 dark:text-emerald-400 font-mono mt-1 block">95% False-Positive Reduction</span>
         </Card>
       </div>
 
-      <Card className="bg-cardBg border-border">
+      <Card className="bg-cardBg border-border shadow-sm">
         <CardHeader className="p-4 pb-3">
-          <CardTitle className="text-sm font-bold text-white">
+          <CardTitle className="text-sm font-bold text-foreground">
             Monitored Enterprise Personnel & Behavioral Baselines
           </CardTitle>
           <CardDescription className="text-xs text-textSecondary">
@@ -139,11 +139,11 @@ export function UsersView() {
                   return (
                     <TableRow key={u.user_id} className="border-border hover:bg-cardHoverBg text-xs font-mono">
                       <TableCell>
-                        <div className="font-semibold text-white">{u.name}</div>
+                        <div className="font-semibold text-foreground">{u.name}</div>
                         <div className="text-[11px] text-textSecondary">{u.user_id}</div>
                       </TableCell>
                       <TableCell>
-                        <div className="text-white">{u.role}</div>
+                        <div className="text-foreground">{u.role}</div>
                         <div className="text-[11px] text-textSecondary">{u.department}</div>
                       </TableCell>
                       <TableCell>
@@ -151,19 +151,19 @@ export function UsersView() {
                           variant="outline"
                           className={cn(
                             "text-[10px] border-none font-mono",
-                            u.hr_status.includes("RESIGNED") ? "bg-rose-500/20 text-rose-400" : "bg-emerald-500/20 text-emerald-400"
+                            u.hr_status.includes("RESIGNED") ? "bg-rose-500/15 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400" : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400"
                           )}
                         >
                           {u.hr_status}
                         </Badge>
                       </TableCell>
-                      <TableCell className={isThreat ? "text-rose-400 font-bold" : "text-white font-semibold"}>
+                      <TableCell className={isThreat ? "text-rose-600 dark:text-rose-400 font-bold" : "text-foreground font-semibold"}>
                         {u.drift}
                       </TableCell>
                       <TableCell className="text-textSecondary">{u.peer_norm}</TableCell>
                       <TableCell>
                         <Badge
-                          className={isThreat ? "bg-rose-500/20 text-rose-400 border-none" : "bg-emerald-500/20 text-emerald-400 border-none"}
+                          className={isThreat ? "bg-rose-500/15 text-rose-600 dark:bg-rose-500/20 dark:text-rose-400 border-none" : "bg-emerald-500/15 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400 border-none"}
                         >
                           {isThreat ? "ESCALATED THREAT" : "SUPPRESSED"}
                         </Badge>

@@ -3,11 +3,59 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 0 0% 0%;
+  :root,
+  .light {
+    /* Luxurious Warm Cream White Light Theme */
+    --background: 38 28% 96%;        /* #FAF7F2 Warm Cream White */
+    --foreground: 24 10% 12%;        /* #1C1917 Deep Espresso Charcoal */
+
+    --card: 0 0% 100%;              /* Pure Warm White Card */
+    --card-foreground: 24 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 10% 12%;
+
+    --primary: 24 10% 12%;
+    --primary-foreground: 38 28% 96%;
+
+    --secondary: 38 20% 92%;         /* #F2EFE8 */
+    --secondary-foreground: 24 10% 12%;
+
+    --muted: 38 18% 93%;             /* #F4F1EA */
+    --muted-foreground: 28 9% 45%;    /* #736B63 Warm Stone Slate */
+
+    --accent: 38 20% 92%;
+    --accent-foreground: 24 10% 12%;
+
+    --destructive: 347 77% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 36 16% 87%;            /* #E3DDD5 Soft Warm Paper Border */
+    --input: 36 16% 87%;
+    --ring: 24 10% 25%;
+
+    --radius: 0.5rem;
+
+    /* Semantic Dashboard Tokens */
+    --color-container: #F3EFE8;
+    --color-card-bg: #FFFFFF;
+    --color-card-hover: #F8F5EE;
+    --color-input-bg: #FAF7F2;
+    --color-text-secondary: #736B63;
+
+    /* Light Theme Chart Palette */
+    --chart-1: 24 10% 25%;           /* Titanium Charcoal */
+    --chart-2: 262 70% 55%;          /* Amethyst Violet */
+    --chart-3: 158 65% 40%;          /* Emerald Safe */
+    --chart-4: 347 77% 50%;          /* Crimson Alert */
+    --chart-5: 38 88% 46%;           /* Amber Warning */
+  }
+
+  .dark {
+    --background: 0 0% 0%;           /* Deep Onyx Black */
     --foreground: 0 0% 98%;
 
-    --card: 0 0% 5%;
+    --card: 0 0% 5%;                /* #0C0C0C */
     --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 5%;
@@ -20,7 +68,7 @@
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 60%;    /* #8E8E93 */
 
     --accent: 0 0% 90%;
     --accent-foreground: 0 0% 0%;
@@ -28,18 +76,25 @@
     --destructive: 347 87% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 3%;
+    --border: 0 0% 12%;              /* #1C1C1E */
+    --input: 0 0% 3%;               /* #050505 */
     --ring: 0 0% 80%;
 
     --radius: 0.5rem;
 
+    /* Semantic Dashboard Tokens */
+    --color-container: #080808;
+    --color-card-bg: #0C0C0C;
+    --color-card-hover: #141414;
+    --color-input-bg: #050505;
+    --color-text-secondary: #8E8E93;
+
     /* Formal Titanium, Emerald, Amethyst, Crimson Chart Palette */
-    --chart-1: 0 0% 85%;      /* Titanium White / Silver */
-    --chart-2: 262 83% 58%;    /* Purple / Amethyst */
-    --chart-3: 158 64% 52%;    /* Emerald Safe */
-    --chart-4: 347 87% 60%;    /* Crimson Alert */
-    --chart-5: 38 92% 50%;     /* Amber Warning */
+    --chart-1: 0 0% 85%;             /* Titanium White / Silver */
+    --chart-2: 262 83% 58%;           /* Purple / Amethyst */
+    --chart-3: 158 64% 52%;           /* Emerald Safe */
+    --chart-4: 347 87% 60%;           /* Crimson Alert */
+    --chart-5: 38 92% 50%;            /* Amber Warning */
   }
 }
 
@@ -48,7 +103,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased transition-colors duration-200;
   }
 }
 
@@ -58,12 +113,21 @@
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: transparent;
 }
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: #1C1C1E;
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #2C2C2E;
+}
+:root ::-webkit-scrollbar-thumb,
+.light ::-webkit-scrollbar-thumb {
+  background: #DCD6CD;
+  border-radius: 3px;
+}
+:root ::-webkit-scrollbar-thumb:hover,
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #C8C1B6;
 }

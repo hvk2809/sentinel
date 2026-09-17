@@ -15,8 +15,11 @@ import {
   Layers,
   UserCheck,
   LogOut,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useAuth } from '@/lib/auth-context';
+import { useTheme } from 'next-themes';
 
 import {
   Sidebar,
@@ -42,6 +45,14 @@ interface DashboardSidebarProps {
 export default function DashboardSidebar({ activeTab, onTabChange }: DashboardSidebarProps) {
   const { state } = useSidebar();
   const { logout } = useAuth();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isLight = mounted && theme === 'light';
 
   const commonButtonClass =
     'hover:bg-white/5 hover:text-white transition-colors cursor-pointer text-[#8E8E93] text-xs font-medium py-2 rounded-md';
@@ -144,6 +155,28 @@ export default function DashboardSidebar({ activeTab, onTabChange }: DashboardSi
       {/* Footer Settings & Fixed User Profile */}
       <SidebarFooter className="mt-auto px-2 pb-3 border-t border-[#1C1C1E]/60 pt-2">
         <SidebarMenu className="space-y-1 mb-2">
+          {/* Theme Toggle directly above Notifications */}
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              asChild
+              className={commonButtonClass}
+              onClick={() => setTheme(isLight ? 'dark' : 'light')}
+            >
+              <button
+                type="button"
+                className="w-full flex items-center gap-2.5 px-3 group"
+                title={isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+              >
+                {isLight ? (
+                  <Sun className="h-4 w-4 text-amber-400 transition-transform duration-300 group-hover:rotate-45" />
+                ) : (
+                  <Moon className="h-4 w-4 text-zinc-300 transition-transform duration-300 group-hover:-rotate-12" />
+                )}
+                <span>{isLight ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild

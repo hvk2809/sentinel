@@ -57,38 +57,38 @@ export default function DashboardContent({ activeTab }: DashboardContentProps) {
   };
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden w-full bg-[#000000]">
+    <div className="flex flex-1 flex-col overflow-hidden w-full bg-background">
       {/* Top Header */}
-      <header className="flex h-16 items-center justify-between border-b border-[#1C1C1E] px-4 md:px-6 shrink-0 bg-[#050505]">
+      <header className="flex h-16 items-center justify-between border-b border-border px-4 md:px-6 shrink-0 bg-[#FAF7F2] dark:bg-[#050505] transition-colors">
         <div className="flex items-center gap-4">
           <SidebarTrigger />
-          <h1 className="text-xl font-bold tracking-tight text-white">{pageTitle}</h1>
+          <h1 className="text-xl font-bold tracking-tight text-foreground">{pageTitle}</h1>
         </div>
 
         {/* Right: Organization & User Profile */}
         <div className="flex items-center gap-4">
           <div className="hidden sm:flex flex-col items-end">
-            <span className="text-xs font-bold text-white tracking-wide">Vijay Eswaran S</span>
-            <span className="text-[10px] text-[#8E8E93] font-mono">
+            <span className="text-xs font-bold text-foreground tracking-wide">Vijay Eswaran S</span>
+            <span className="text-[10px] text-textSecondary font-mono">
               Security Administrator | Microsoft
             </span>
           </div>
 
           <div className="relative">
-            <Avatar className="h-9 w-9 border border-[#2C2C2E] shadow-sm">
+            <Avatar className="h-9 w-9 border border-border shadow-sm">
               <AvatarImage src="/user-avatar.jpg" alt="Vijay Eswaran S" className="object-cover" />
-              <AvatarFallback className="bg-white/10 text-white font-mono font-bold text-xs tracking-wider">
+              <AvatarFallback className="bg-accent text-accent-foreground font-mono font-bold text-xs tracking-wider">
                 VE
               </AvatarFallback>
             </Avatar>
-            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[#050505]" />
+            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-background" />
           </div>
 
           <button
             type="button"
             onClick={logout}
             title="Sign Out / Lock Console"
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-[#1C1C1E] bg-[#0C0C0C] text-[#8E8E93] hover:text-white hover:border-[#2C2C2E] hover:bg-[#141414] text-xs font-mono transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-border bg-card text-textSecondary hover:text-foreground hover:bg-cardHoverBg text-xs font-mono transition-all cursor-pointer shadow-sm"
           >
             <LogOut className="h-3.5 w-3.5" />
             <span className="hidden sm:inline">Sign Out</span>
@@ -97,7 +97,7 @@ export default function DashboardContent({ activeTab }: DashboardContentProps) {
       </header>
 
       {/* Main Content Area */}
-      <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#000000] w-full">
+      <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-background w-full transition-colors">
         {renderTabContent()}
       </main>
     </div>

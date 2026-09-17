@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth-context";
+import { useTheme } from "next-themes";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -12,17 +13,27 @@ import {
   EyeOff,
   CheckCircle2,
   AlertCircle,
+  Sun,
+  Moon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function LoginView() {
   const { login } = useAuth();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isLight = mounted && theme === "light";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,26 +59,50 @@ export function LoginView() {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#000000] text-white overflow-hidden p-4 select-none">
-      {/* Background High-Tech Grid & Radial Ambient Light */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(#1C1C1E_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/[0.02] rounded-full blur-[130px] pointer-events-none" />
+    <div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#FAF7F2] dark:bg-[#000000] text-white overflow-hidden p-4 select-none transition-colors duration-300">
+      {/* Top Right Quick Theme Switcher */}
+      {mounted && (
+        <div className="absolute top-5 right-5 z-20">
+          <button
+            type="button"
+            onClick={() => setTheme(isLight ? "dark" : "light")}
+            title={isLight ? "Switch to Dark Mode" : "Switch to Light Mode"}
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#D8D2C7] dark:border-[#1C1C1E] bg-[#FFFFFF] dark:bg-[#0C0C0C] text-[#5C574F] dark:text-[#8E8E93] hover:text-[#1A1917] dark:hover:text-white shadow-sm hover:shadow transition-all text-xs font-mono cursor-pointer"
+          >
+            {isLight ? (
+              <>
+                <Sun className="h-3.5 w-3.5 text-amber-500" />
+                <span className="font-semibold text-zinc-800">Light Mode</span>
+              </>
+            ) : (
+              <>
+                <Moon className="h-3.5 w-3.5 text-zinc-300" />
+                <span className="font-semibold text-zinc-300">Dark Mode</span>
+              </>
+            )}
+          </button>
+        </div>
+      )}
+
+      {/* Background High-Tech Subtle Grid & Ambient Radial Light */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(#D5CFC6_1px,transparent_1px)] dark:bg-[radial-gradient(#1C1C1E_1px,transparent_1px)] [background-size:24px_24px] opacity-50 dark:opacity-40" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-amber-400/5 dark:bg-white/[0.02] rounded-full blur-[130px] pointer-events-none" />
 
       {/* Main Container */}
       <div className="relative z-10 w-full max-w-sm flex flex-col items-center">
-        {/* Animated Brand Logo Container */}
-        <div className="relative flex flex-col items-center mb-8">
-          <div className="relative animate-logo-entrance transition-transform duration-500 hover:scale-105">
-            <img
-              src="/logo.png"
-              alt="Sentinel"
-              className="h-28 sm:h-32 w-auto max-w-[280px] sm:max-w-[320px] object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.22)]"
-            />
+        {/* The Black Sign-In Part (Encapsulates White Logo & Login Form) */}
+        <Card className="w-full bg-[#0C0C0C] border border-[#1C1C1E] shadow-2xl rounded-2xl p-6 sm:p-7 text-white">
+          {/* Animated Brand Logo inside the Black Sign-In Container */}
+          <div className="flex flex-col items-center mb-6">
+            <div className="relative animate-logo-entrance transition-transform duration-500 hover:scale-105">
+              <img
+                src="/logo.png"
+                alt="Sentinel"
+                className="h-24 sm:h-28 w-auto max-w-[240px] sm:max-w-[280px] object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Clean Login Card */}
-        <Card className="w-full bg-[#0C0C0C]/90 backdrop-blur-md border border-[#1C1C1E] shadow-2xl rounded-xl p-6 sm:p-7">
           {/* Error Alert */}
           {errorMessage && (
             <div className="mb-4 flex items-start gap-2.5 p-3 rounded-md bg-rose-950/40 border border-rose-900/60 text-rose-300 text-xs font-mono animate-in fade-in-50 duration-200">

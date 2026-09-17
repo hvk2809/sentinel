@@ -19,19 +19,19 @@ const config = {
     },
     extend: {
       colors: {
-        background: '#000000',
-        containerBg: '#080808',
-        sidebarBg: '#050505',
-        cardBg: '#0C0C0C',
-        cardHoverBg: '#141414',
-        inputBg: '#050505',
+        background: 'hsl(var(--background))',
+        containerBg: 'var(--color-container)',
+        sidebarBg: '#050505', // Always pure black in both modes to showcase white logo!
+        cardBg: 'var(--color-card-bg)',
+        cardHoverBg: 'var(--color-card-hover)',
+        inputBg: 'var(--color-input-bg)',
         accent: {
-          DEFAULT: '#E2E8F0', // Crisp Titanium Slate (No Blue!)
-          foreground: '#050505',
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
         },
-        accentHover: '#FFFFFF',
-        text: '#FFFFFF',
-        textSecondary: '#8E8E93',
+        accentHover: 'hsl(var(--accent-foreground))',
+        text: 'hsl(var(--foreground))',
+        textSecondary: 'var(--color-text-secondary)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

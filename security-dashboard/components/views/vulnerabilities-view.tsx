@@ -50,7 +50,7 @@ export function VulnerabilitiesView() {
     <div className="space-y-6 w-full">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
             <Lock className="h-5 w-5 text-accent" />
             Vulnerability Management & Host Exposure
           </h2>
@@ -59,32 +59,32 @@ export function VulnerabilitiesView() {
           </p>
         </div>
         <div className="flex items-center gap-2 font-mono text-xs">
-          <Badge className="bg-red-500/20 text-red-400 border-none">2 Critical CVEs</Badge>
-          <Badge className="bg-green-500/20 text-green-400 border-none">94% Fleet Patched</Badge>
+          <Badge className="bg-rose-500/15 text-rose-600 dark:bg-red-500/20 dark:text-red-400 border-none">2 Critical CVEs</Badge>
+          <Badge className="bg-emerald-500/15 text-emerald-600 dark:bg-green-500/20 dark:text-green-400 border-none">94% Fleet Patched</Badge>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Total Known CVEs</span>
-          <div className="text-2xl font-bold font-mono text-white mt-1">86</div>
-          <span className="text-xs text-green-400 font-mono mt-1 block">82 Mitigated</span>
+          <div className="text-2xl font-bold font-mono text-foreground mt-1">86</div>
+          <span className="text-xs text-emerald-600 dark:text-green-400 font-mono mt-1 block">82 Mitigated</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Policy Exceptions</span>
-          <div className="text-2xl font-bold font-mono text-rose-400 mt-1">1 Critical</div>
-          <span className="text-xs text-rose-400 font-mono mt-1 block">Unapproved USB Mount</span>
+          <div className="text-2xl font-bold font-mono text-rose-600 dark:text-rose-400 mt-1">1 Critical</div>
+          <span className="text-xs text-rose-600 dark:text-rose-400 font-mono mt-1 block">Unapproved USB Mount</span>
         </Card>
-        <Card className="bg-cardBg border-border p-4">
+        <Card className="bg-cardBg border-border p-4 shadow-sm">
           <span className="text-xs font-mono text-textSecondary uppercase">Mean Time to Remediate</span>
-          <div className="text-2xl font-bold font-mono text-cyan-400 mt-1">4.2 Hours</div>
+          <div className="text-2xl font-bold font-mono text-cyan-600 dark:text-cyan-400 mt-1">4.2 Hours</div>
           <span className="text-xs text-textSecondary font-mono mt-1 block">Sub-10s SIEM Triage</span>
         </Card>
       </div>
 
-      <Card className="bg-cardBg border-border">
+      <Card className="bg-cardBg border-border shadow-sm">
         <CardHeader className="p-4 pb-3">
-          <CardTitle className="text-sm font-bold text-white">
+          <CardTitle className="text-sm font-bold text-foreground">
             Active Endpoint Vulnerabilities & Policy Violations
           </CardTitle>
           <CardDescription className="text-xs text-textSecondary">
@@ -108,16 +108,16 @@ export function VulnerabilitiesView() {
                 {vulnerabilities.map((v) => (
                   <TableRow key={v.cve} className="border-border hover:bg-cardHoverBg text-xs font-mono">
                     <TableCell className="font-semibold text-accent">{v.cve}</TableCell>
-                    <TableCell className="text-white">{v.title}</TableCell>
+                    <TableCell className="text-foreground">{v.title}</TableCell>
                     <TableCell className="text-textSecondary">{v.target}</TableCell>
-                    <TableCell className={Number(v.score) > 9 ? "text-rose-400 font-bold" : "text-amber-400"}>
+                    <TableCell className={Number(v.score) > 9 ? "text-rose-600 dark:text-rose-400 font-bold" : "text-amber-600 dark:text-amber-400"}>
                       {v.score}
                     </TableCell>
-                    <TableCell className={v.insiderRisk.includes("Active") ? "text-rose-400 font-bold" : "text-textSecondary"}>
+                    <TableCell className={v.insiderRisk.includes("Active") ? "text-rose-600 dark:text-rose-400 font-bold" : "text-textSecondary"}>
                       {v.insiderRisk}
                     </TableCell>
                     <TableCell>
-                      <Badge variant="outline" className="border-border bg-inputBg text-[11px] text-slate-300">
+                      <Badge variant="outline" className="border-border bg-inputBg text-[11px] text-[#4A453E] dark:text-slate-300">
                         {v.status}
                       </Badge>
                     </TableCell>
