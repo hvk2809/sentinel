@@ -1,0 +1,116 @@
+{
+  "hr_records": {
+    "USER_BENIGN_ALICE": {
+      "user_id": "USER_BENIGN_ALICE",
+      "name": "Alice Vance",
+      "department": "Data Platform",
+      "role": "Lead Data Infrastructure Engineer",
+      "employment_status": "ACTIVE",
+      "role_transfers": [
+        {
+          "effective_date": "2024-03-12",
+          "previous_dept": "Security Operations",
+          "new_dept": "Data Platform",
+          "reason": "Promotion to Lead Infrastructure Engineer",
+          "authorized_by": "vp_engineering@corp.local"
+        }
+      ],
+      "resignation_status": "NONE",
+      "assigned_projects": ["Project Horizon", "Warehouse DB Migration"]
+    },
+    "USER_INSIDER_MALORY": {
+      "user_id": "USER_INSIDER_MALORY",
+      "name": "Malory Sterling",
+      "department": "Firmware & Hardware Eng",
+      "role": "Senior Embedded Firmware Engineer",
+      "employment_status": "PENDING_TERMINATION",
+      "role_transfers": [],
+      "resignation_status": "RESIGNED_TWO_WEEKS_NOTICE",
+      "resignation_date": "2024-03-10",
+      "effective_departure_date": "2024-03-24",
+      "assigned_projects": ["Legacy Bootloader v4"]
+    },
+    "USER_INSIDER_BOB": {
+      "user_id": "USER_INSIDER_BOB",
+      "name": "Bob Henderson",
+      "department": "IT Operations",
+      "role": "Systems Administrator",
+      "employment_status": "ACTIVE",
+      "role_transfers": [],
+      "resignation_status": "NONE",
+      "assigned_projects": ["Quarterly Patching", "Active Directory Cleanup"]
+    },
+    "USER_PEER_CHARLIE": {
+      "user_id": "USER_PEER_CHARLIE",
+      "name": "Charlie Ray",
+      "department": "Data Platform",
+      "role": "Data Engineer",
+      "employment_status": "ACTIVE",
+      "role_transfers": [],
+      "resignation_status": "NONE",
+      "assigned_projects": ["Warehouse DB Migration"]
+    },
+    "USER_PEER_DIANA": {
+      "user_id": "USER_PEER_DIANA",
+      "name": "Diana Ross",
+      "department": "Firmware & Hardware Eng",
+      "role": "Firmware QA Engineer",
+      "employment_status": "ACTIVE",
+      "role_transfers": [],
+      "resignation_status": "NONE",
+      "assigned_projects": ["Legacy Bootloader v4"]
+    },
+    "USER_PEER_EDWARD": {
+      "user_id": "USER_PEER_EDWARD",
+      "name": "Edward Norton",
+      "department": "IT Operations",
+      "role": "IT Support Specialist",
+      "employment_status": "ACTIVE",
+      "role_transfers": [],
+      "resignation_status": "NONE",
+      "assigned_projects": ["Desktop Provisioning"]
+    }
+  },
+  "tickets": [
+    {
+      "ticket_id": "CR-8821",
+      "user_id": "USER_BENIGN_ALICE",
+      "request_type": "EMERGENCY_CHANGE_REQUEST",
+      "description": "Authorized emergency database migration and large-scale off-hours mirror sync to new cloud bucket.",
+      "created_at": "2024-03-19T14:30:00Z",
+      "emergency_window_start": "2024-03-20T00:00:00Z",
+      "emergency_window_end": "2024-03-20T06:00:00Z",
+      "status": "APPROVED",
+      "approved_by": "secops_director@corp.local",
+      "target_systems": ["db-prod-replica-01", "nas-data-archive"],
+      "validity_flag": true
+    },
+    {
+      "ticket_id": "CR-4040",
+      "user_id": "USER_INSIDER_BOB",
+      "request_type": "ROUTINE_MAINTENANCE",
+      "description": "Scheduled file backup test for legacy server shares.",
+      "created_at": "2024-03-01T09:00:00Z",
+      "emergency_window_start": "2024-03-05T01:00:00Z",
+      "emergency_window_end": "2024-03-05T04:00:00Z",
+      "status": "EXPIRED_OUT_OF_WINDOW",
+      "approved_by": "self_signed_admin",
+      "target_systems": ["dc-backup-stage"],
+      "validity_flag": false,
+      "discrepancy_reason": "Execution attempted on 2024-03-20 which is 15 days past approved window; invalid approver role."
+    },
+    {
+      "ticket_id": "SR-1092",
+      "user_id": "USER_PEER_CHARLIE",
+      "request_type": "STANDARD_REQUEST",
+      "description": "Access grant for cloud ETL bucket.",
+      "created_at": "2024-03-15T11:00:00Z",
+      "emergency_window_start": "2024-03-15T00:00:00Z",
+      "emergency_window_end": "2024-03-25T00:00:00Z",
+      "status": "APPROVED",
+      "approved_by": "lead_architect@corp.local",
+      "target_systems": ["etl-pipeline-s3"],
+      "validity_flag": true
+    }
+  ]
+}
