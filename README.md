@@ -1,4 +1,4 @@
-# Sentinel: Neuro-Symbolic Context Triage Engine for Insider Threat Detection
+# Sentinel
 
 > **Live Production Dashboard:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)
 
@@ -223,9 +223,6 @@ The production Sentinel SOC Dashboard is hosted and available directly in the br
 To run the automated neuro-symbolic test suite across all 5 detection layers:
 
 1. Navigate to the project directory:
-   ```bash
-   cd /home/nurphy/Desktop/M_Hash_2026/sentinel
-   ```
 
 2. Create and activate a Python virtual environment:
    ```bash
@@ -246,15 +243,6 @@ To run the automated neuro-symbolic test suite across all 5 detection layers:
 
 ---
 
-### 3. Streamlit Triage Console (Alternative Interface)
-
-To launch the local Python Streamlit triage chamber:
-```bash
-streamlit run app.py
-```
-Open your browser at `http://localhost:8501`.
-
----
 
 ## 9. Operating the Dashboard
 
@@ -277,10 +265,3 @@ Open your browser at `http://localhost:8501`.
 - **LLM Compatibility:** Dual-mode architecture supporting Google Gemini 2.0 Flash (`AIza...`), OpenAI GPT-4o (`sk-...`), and offline local symbolic generation.
 
 ---
-
-## 11. Author and Credits
-
-- **Project Lead & Security Architect:** Vijay Eswaran S
-- **Role:** Security Administrator | Microsoft
-- **Event:** Manipal Hackathon 2026
-- **Track:** Silent Shift: Detecting the Insider Before the Incident
