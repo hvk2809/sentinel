@@ -21,7 +21,7 @@ export function ReportsView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-accent" />
+            <BarChart3 className="h-5 w-5 text-foreground" />
             Deterministic SIEM Audit Reports & EMAD Decision Logs
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">

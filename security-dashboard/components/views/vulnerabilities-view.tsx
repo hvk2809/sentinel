@@ -51,7 +51,7 @@ export function VulnerabilitiesView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Lock className="h-5 w-5 text-accent" />
+            <Lock className="h-5 w-5 text-foreground" />
             Vulnerability Management & Host Exposure
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">
@@ -107,7 +107,7 @@ export function VulnerabilitiesView() {
               <TableBody>
                 {vulnerabilities.map((v) => (
                   <TableRow key={v.cve} className="border-border hover:bg-cardHoverBg text-xs font-mono">
-                    <TableCell className="font-semibold text-accent">{v.cve}</TableCell>
+                    <TableCell className="font-semibold text-foreground">{v.cve}</TableCell>
                     <TableCell className="text-foreground">{v.title}</TableCell>
                     <TableCell className="text-textSecondary">{v.target}</TableCell>
                     <TableCell className={Number(v.score) > 9 ? "text-rose-600 dark:text-rose-400 font-bold" : "text-amber-600 dark:text-amber-400"}>

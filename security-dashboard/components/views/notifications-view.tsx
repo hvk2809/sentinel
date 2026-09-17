@@ -42,7 +42,7 @@ export function NotificationsView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Bell className="h-5 w-5 text-accent" />
+            <Bell className="h-5 w-5 text-foreground" />
             Live Security Notifications & Incident Alerts
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">
@@ -62,7 +62,7 @@ export function NotificationsView() {
                   ) : a.type === "suppressed" ? (
                     <ShieldCheck className="h-4 w-4 text-emerald-500" />
                   ) : (
-                    <Bell className="h-4 w-4 text-accent" />
+                    <Bell className="h-4 w-4 text-foreground" />
                   )}
                 </div>
                 <div>

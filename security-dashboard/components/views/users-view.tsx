@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Users, UserX, UserCheck, Shield, Activity, HardDrive } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function UsersView() {
   const usersList = [
@@ -81,7 +82,7 @@ export function UsersView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Users className="h-5 w-5 text-accent" />
+            <Users className="h-5 w-5 text-foreground" />
             User Entity Directory & Peer Cohort Risk Index
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">

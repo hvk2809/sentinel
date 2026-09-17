@@ -61,8 +61,8 @@ export function RecentActivityWidget() {
           <div className="space-y-4">
             {activities.map((activity) => (
               <div key={activity.id} className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10">
-                  <activity.icon className="h-4 w-4 text-accent" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
+                  <activity.icon className="h-4 w-4 text-foreground" />
                 </div>
                 <div className="space-y-1">
                   <p className="text-sm font-medium">{activity.message}</p>

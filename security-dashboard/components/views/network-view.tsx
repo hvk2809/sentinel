@@ -55,7 +55,7 @@ export function NetworkView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Wifi className="h-5 w-5 text-accent" />
+            <Wifi className="h-5 w-5 text-foreground" />
             Network Topology & Outbound Exfiltration Telemetry
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">
@@ -112,7 +112,7 @@ export function NetworkView() {
               <TableBody>
                 {flows.map((f) => (
                   <TableRow key={f.id} className="border-border hover:bg-cardHoverBg text-xs font-mono">
-                    <TableCell className="font-semibold text-accent">{f.id}</TableCell>
+                    <TableCell className="font-semibold text-foreground">{f.id}</TableCell>
                     <TableCell className="text-textSecondary">{f.timestamp}</TableCell>
                     <TableCell className="text-foreground font-medium">{f.source}</TableCell>
                     <TableCell className="text-foreground">{f.destination}</TableCell>

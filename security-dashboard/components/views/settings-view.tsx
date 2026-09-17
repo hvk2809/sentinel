@@ -21,7 +21,7 @@ export function SettingsView() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-border pb-4">
         <div>
           <h2 className="text-xl font-bold tracking-tight text-foreground flex items-center gap-2">
-            <Settings className="h-5 w-5 text-accent" />
+            <Settings className="h-5 w-5 text-foreground" />
             Sentinel Engine Configuration & Telemetry Parameters
           </h2>
           <p className="text-xs text-textSecondary mt-0.5">
