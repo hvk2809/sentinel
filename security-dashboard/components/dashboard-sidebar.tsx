@@ -126,19 +126,6 @@ export default function DashboardSidebar({ activeTab, onTabChange }: DashboardSi
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className={cn(commonButtonClass, activeTab === 'users' && activeClass)}
-              onClick={() => onTabChange('users')}
-            >
-              <button type="button" className="w-full flex items-center gap-2.5 px-3">
-                <Users className="h-4 w-4" />
-                <span>Users</span>
-              </button>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
               className={cn(commonButtonClass, activeTab === 'reports' && activeClass)}
               onClick={() => onTabChange('reports')}
             >
