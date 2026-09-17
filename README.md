@@ -1,4 +1,4 @@
-# Sentinel: Neuro-Symbolic Context Triage Engine for Insider Threat Detection
+# Sentinel
 
 > **Live Production Dashboard:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)
 
