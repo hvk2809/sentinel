@@ -1,5 +1,7 @@
 # Sentinel SOC Dashboard
 
+> **Live Deployment:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)
+
 Next.js 15 enterprise security intelligence and triage console for the Sentinel Neuro-Symbolic Insider Threat Detection platform.
 
 ---
@@ -10,7 +12,7 @@ The Sentinel SOC Dashboard provides security operations personnel and forensic i
 
 ---
 
-## 2. Architecture & Tech Stack
+## 2. Architecture and Tech Stack
 
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript 5.0+
@@ -18,7 +20,7 @@ The Sentinel SOC Dashboard provides security operations personnel and forensic i
 - **UI System**: Radix UI / shadcn/ui primitives
 - **Visualizations**: Recharts SVG charting engine
 - **Icons**: Lucide React
-- **State Management**: React Hooks & Context
+- **State Management**: React Hooks and Context
 
 ---
 
@@ -36,8 +38,8 @@ security-dashboard/
 │   ├── dashboard-widgets.tsx    # Scenario triage selector and primary metrics
 │   ├── dashboard.tsx            # Full-screen responsive dashboard container
 │   ├── theme-provider.tsx       # NextThemes dark mode provider
-│   ├── ui/                      # 30+ accessible UI primitives (buttons, dialogs, tables)
-│   ├── views/                   # Dedicated operational modules (Threats, Network, Users)
+│   ├── ui/                      # Accessible UI primitives (buttons, dialogs, tables)
+│   ├── views/                   # Dedicated operational modules (Threats, Network, Reports)
 │   └── widgets/                 # Reusable analytical charts and activity feeds
 ├── lib/
 │   ├── triage-data.ts           # CMU-CERT r4.2 incident telemetry and EMAD cases
@@ -50,29 +52,7 @@ security-dashboard/
 
 ---
 
-## 4. Setup and Execution
+## 4. Live Access
 
-### Prerequisites
-- Node.js 18.17.0 or higher
-- npm 9.0.0 or higher
-
-### Installation
-```bash
-cd security-dashboard
-npm install
-```
-
-### Development Server
-```bash
-npm run dev
-```
-Access the dashboard in your web browser at:
-```
-http://localhost:3000
-```
-
-### Production Build
-```bash
-npm run build
-npm run start
-```
+The production dashboard is deployed and hosted on Vercel:
+- **Production URL:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)

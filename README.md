@@ -1,5 +1,7 @@
 # Sentinel: Neuro-Symbolic Context Triage Engine for Insider Threat Detection
 
+> **Live Production Dashboard:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)
+
 An enterprise-grade insider threat detection and automated triage system engineered for Security Operations Centers (SOCs). Sentinel resolves the **Silent Shift** problem by unifying statistical behavioral drift detection, departmental peer group normalization, and an **Evidence-Based Multi-Agent Debate (EMAD)** adjudication chamber.
 
 ---
@@ -208,19 +210,19 @@ sentinel/
 
 ---
 
-## 8. Installation and Quickstart Guide
+## 8. Access and Execution Guide
 
-### Prerequisites
-- Python 3.10, 3.11, or 3.12
-- Node.js 18.17.0 or higher
-- npm 9.0.0 or higher
-- Linux, macOS, or Windows WSL
+### 1. Live Web Application
+The production Sentinel SOC Dashboard is hosted and available directly in the browser:
+- **Live URL:** [https://sentinel-soc-dashboard.vercel.app/](https://sentinel-soc-dashboard.vercel.app/)
 
 ---
 
-### Step 1: Environment Setup and Backend Validation
+### 2. Backend Validation and Test Pipeline
 
-1. Clone or navigate to the project directory:
+To run the automated neuro-symbolic test suite across all 5 detection layers:
+
+1. Navigate to the project directory:
    ```bash
    cd /home/nurphy/Desktop/M_Hash_2026/sentinel
    ```
@@ -244,37 +246,10 @@ sentinel/
 
 ---
 
-### Step 2: Launching the Next.js 15 SOC Dashboard (Local or Vercel)
+### 3. Streamlit Triage Console (Alternative Interface)
 
-1. Navigate to the dashboard directory:
-   ```bash
-   cd security-dashboard
-   ```
-
-2. Install Node.js dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the local development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to:
-   ```
-   http://localhost:3000
-   ```
-
-> For step-by-step instructions on deploying the live dashboard to Vercel for 100% free, refer to [VERCEL_DEPLOYMENT_GUIDE.md](file:///home/nurphy/Desktop/M_Hash_2026/sentinel/VERCEL_DEPLOYMENT_GUIDE.md).
-
----
-
-### Step 3: Launching the Python Streamlit Triage Console (Alternative Interface)
-
-If you wish to run the interactive Streamlit chamber:
+To launch the local Python Streamlit triage chamber:
 ```bash
-cd /home/nurphy/Desktop/M_Hash_2026/sentinel
 streamlit run app.py
 ```
 Open your browser at `http://localhost:8501`.
@@ -283,7 +258,7 @@ Open your browser at `http://localhost:8501`.
 
 ## 9. Operating the Dashboard
 
-1. **Scenario Selection:** In the Active Scenarios selector, choose from `USER_INSIDER_MALORY`, `USER_BENIGN_ALICE`, or `USER_INSIDER_BOB`.
+1. **Scenario Selection:** In the Active Cases selector, choose from `USER_INSIDER_MALORY`, `USER_BENIGN_ALICE`, or `USER_INSIDER_BOB`.
 2. **Telemetry Inspection:** Review the 24-hour behavioral radar and feature divergence metrics (Off-Hours Activity, Removable Drive Copies, Resource Cardinality).
 3. **Peer Comparison:** View the department baseline chart to verify whether an anomaly is solitary or department-wide.
 4. **EMAD Debate Chamber:**

@@ -52,7 +52,7 @@ export function DashboardWidgets() {
           <div className="flex items-center gap-2.5">
             <Shield className="h-4 w-4 text-white" />
             <CardTitle className="text-sm font-bold text-white">
-              Active Scenarios
+              Active Cases
             </CardTitle>
           </div>
           <div className="flex items-center gap-2">
