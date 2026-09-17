@@ -12,6 +12,8 @@ import { ReportsView } from "./views/reports-view";
 import { NotificationsView } from "./views/notifications-view";
 import { SettingsView } from "./views/settings-view";
 import { Badge } from "@/components/ui/badge";
+import { LogOut } from "lucide-react";
+import { useAuth } from "@/lib/auth-context";
 
 const tabToTitle: Record<string, string> = {
   dashboard: "Dashboard",
@@ -29,6 +31,7 @@ interface DashboardContentProps {
 }
 
 export default function DashboardContent({ activeTab }: DashboardContentProps) {
+  const { logout } = useAuth();
   const pageTitle = tabToTitle[activeTab] || "Dashboard";
 
   const renderTabContent = () => {
@@ -80,6 +83,16 @@ export default function DashboardContent({ activeTab }: DashboardContentProps) {
             </Avatar>
             <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-[#050505]" />
           </div>
+
+          <button
+            type="button"
+            onClick={logout}
+            title="Sign Out / Lock Console"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-[#1C1C1E] bg-[#0C0C0C] text-[#8E8E93] hover:text-white hover:border-[#2C2C2E] hover:bg-[#141414] text-xs font-mono transition-all cursor-pointer"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">Sign Out</span>
+          </button>
         </div>
       </header>
 

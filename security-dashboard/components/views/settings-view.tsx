@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Settings, Cpu, Key, Database, Sliders, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export function SettingsView() {
   const [saved, setSaved] = useState(false);
@@ -31,9 +32,14 @@ export function SettingsView() {
           <Button
             size="sm"
             onClick={handleSave}
-            className="bg-accent hover:bg-accentHover text-white font-mono text-xs gap-1.5"
+            className={cn(
+              "font-mono text-xs gap-1.5 transition-all shadow-sm font-semibold",
+              saved
+                ? "bg-emerald-500 hover:bg-emerald-600 text-white"
+                : "bg-white hover:bg-zinc-200 text-black active:scale-95"
+            )}
           >
-            {saved ? <Check className="h-3.5 w-3.5" /> : <Sliders className="h-3.5 w-3.5" />}
+            {saved ? <Check className="h-3.5 w-3.5 text-white" /> : <Sliders className="h-3.5 w-3.5 text-black" />}
             <span>{saved ? "Settings Saved" : "Save Parameters"}</span>
           </Button>
         </div>

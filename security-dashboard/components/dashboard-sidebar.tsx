@@ -14,7 +14,9 @@ import {
   Activity,
   Layers,
   UserCheck,
+  LogOut,
 } from 'lucide-react';
+import { useAuth } from '@/lib/auth-context';
 
 import {
   Sidebar,
@@ -39,6 +41,7 @@ interface DashboardSidebarProps {
 
 export default function DashboardSidebar({ activeTab, onTabChange }: DashboardSidebarProps) {
   const { state } = useSidebar();
+  const { logout } = useAuth();
 
   const commonButtonClass =
     'hover:bg-white/5 hover:text-white transition-colors cursor-pointer text-[#8E8E93] text-xs font-medium py-2 rounded-md';
@@ -171,25 +174,37 @@ export default function DashboardSidebar({ activeTab, onTabChange }: DashboardSi
         {/* Clean, Fixed Bottom-Left User Profile */}
         <div
           className={cn(
-            'flex items-center gap-2.5 p-2 rounded-md bg-[#0C0C0C] border border-[#1C1C1E] transition-all',
-            state === 'collapsed' ? 'justify-center p-1.5' : 'justify-start'
+            'flex items-center gap-2 p-2 rounded-md bg-[#0C0C0C] border border-[#1C1C1E] transition-all',
+            state === 'collapsed' ? 'justify-center p-1.5' : 'justify-between'
           )}
         >
-          <Avatar className="h-7 w-7 border border-white/20 shrink-0">
-            <AvatarImage src="/user-avatar.jpg" alt="Vijay Eswaran S" className="object-cover" />
-            <AvatarFallback className="bg-white/10 text-white font-mono font-bold text-[11px]">
-              VE
-            </AvatarFallback>
-          </Avatar>
+          <div className="flex items-center gap-2.5 min-w-0">
+            <Avatar className="h-7 w-7 border border-white/20 shrink-0">
+              <AvatarImage src="/user-avatar.jpg" alt="Vijay Eswaran S" className="object-cover" />
+              <AvatarFallback className="bg-white/10 text-white font-mono font-bold text-[11px]">
+                VE
+              </AvatarFallback>
+            </Avatar>
+            {state === 'expanded' && (
+              <div className="flex flex-col min-w-0 flex-1">
+                <span className="text-xs font-semibold text-white truncate">
+                  Vijay Eswaran S
+                </span>
+                <span className="text-[10px] text-[#8E8E93] font-mono truncate">
+                  Security Administrator
+                </span>
+              </div>
+            )}
+          </div>
           {state === 'expanded' && (
-            <div className="flex flex-col min-w-0 flex-1">
-              <span className="text-xs font-semibold text-white truncate">
-                Vijay Eswaran S
-              </span>
-              <span className="text-[10px] text-[#8E8E93] font-mono truncate">
-                Security Administrator | Microsoft
-              </span>
-            </div>
+            <button
+              type="button"
+              onClick={logout}
+              title="Sign Out / Lock Console"
+              className="p-1 rounded text-[#8E8E93] hover:text-white hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+            </button>
           )}
         </div>
       </SidebarFooter>

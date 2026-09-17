@@ -25,7 +25,10 @@ const config = {
         cardBg: '#0C0C0C',
         cardHoverBg: '#141414',
         inputBg: '#050505',
-        accent: '#E2E8F0', // Crisp Titanium Slate (No Blue!)
+        accent: {
+          DEFAULT: '#E2E8F0', // Crisp Titanium Slate (No Blue!)
+          foreground: '#050505',
+        },
         accentHover: '#FFFFFF',
         text: '#FFFFFF',
         textSecondary: '#8E8E93',
@@ -76,11 +79,39 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'logo-entrance': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.85) translateY(12px)',
+            filter: 'blur(8px) brightness(0.5)',
+          },
+          '60%': {
+            opacity: '0.9',
+            filter: 'blur(0px) brightness(1.2)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1) translateY(0)',
+            filter: 'blur(0px) brightness(1)',
+          },
+        },
+        'glow-pulse': {
+          '0%, 100%': {
+            opacity: '0.3',
+            transform: 'scale(1)',
+          },
+          '50%': {
+            opacity: '0.7',
+            transform: 'scale(1.08)',
+          },
+        },
       },
       animation: {
         heartbeat: 'heartbeat 1.5s ease-in-out infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'logo-entrance': 'logo-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
       },
       borderRadius: {
         lg: 'var(--radius)',
